@@ -1,0 +1,41 @@
+<div class="recommended_items">
+    <!--recommended_items-->
+    <h2 class="title text-center">recommended items</h2>
+
+    <div id="recommended-item-carousel" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+                @foreach ($productRecommends->chunk(3) as $productRecommendItems)
+                {{-- @if ($keyRecommend % 3 ==0) --}}
+                <div class="item @if ($loop->first) active @endif">
+                    @foreach ($productRecommendItems as $productRecommendItem)
+                    
+                        {{-- @endif --}}
+                        <div class="col-sm-4">
+                            <div class="product-image-wrapper">
+                                <div class="single-products">
+                                    <div class="productinfo text-center">
+                                        <img src="{{ $baseUrl.$productRecommendItem->feature_image_path }}" alt="" />
+                                        <h2>{{ $productRecommendItem->price }}</h2>
+                                        <p>{{ $productRecommendItem->name }}</p>
+                                        <a href="#" class="btn btn-default add-to-cart"><i
+                                                class="fa fa-shopping-cart"></i>Add to cart</a>
+                                    </div>
+        
+                                </div>
+                            </div>
+                        </div>
+                        {{-- @if ($keyRecommend % 3 == 2) --}}
+                    
+                    @endforeach
+                </div>
+                {{-- @endif --}}
+                @endforeach
+        </div>
+        <a class="left recommended-item-control" href="#recommended-item-carousel" data-slide="prev">
+            <i class="fa fa-angle-left"></i>
+        </a>
+        <a class="right recommended-item-control" href="#recommended-item-carousel" data-slide="next">
+            <i class="fa fa-angle-right"></i>
+        </a>
+    </div>
+</div>
